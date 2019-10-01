@@ -1,0 +1,30 @@
+*:focus {
+  outline: none;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0px;
+  height: 100%;
+  background-color: gray;
+}
+
+#table {
+  position: relative;
+  border: 1px solid grey;
+  width: calc(100% - 12px);
+  height: calc(100% - 12px);
+  overflow: scroll;
+  top: 5px;
+  left: 5px;
+  background-color: white;
+
+}
+
+canvas {
+  margin-top: -1px;
+  margin-left: -1px;
+}

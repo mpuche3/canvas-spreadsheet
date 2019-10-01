@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>canvas-excel</title>
+  <link href="css/style01.css" rel="stylesheet" type="text/css">
+  <link href="css/style02.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <div id="table">
+    <canvas id="canvas" style="position: absolute;"></canvas>
+    <canvas id="canvas-sel" style="position: absolute;"></canvas>
+  </div>
+  <div id="main-toolbar">
+    <div id="export" class="toolbar-bttn">
+      <img class="bttn-icon" src="svg/export-file.svg">
+    </div>
+    <div id="open" class="toolbar-bttn">
+      <img class="bttn-icon" src="svg/open-file.svg">
+    </div>
+    <div class="toolbar-delimeter">
+    </div>
+    <div class="toolbar-bttn">
+      <img id="circle-bttn" class="bttn-icon" src="svg/circle.svg">
+    </div>
+    <a id="mpaQrLogo" href="https://www.quickrelease.co.uk" target="_blank">
+      <img src="svg/QR_.svg" alt="Quick Release">
+    </a>
+  </div>
+  <div id="secondary-circle-toolbar" class="secondary-toolbar">
+    <div id="circle-01" class="toolbar-bttn">
+      <img class="bttn-icon" src="svg/circle-01.svg">
+    </div>
+    <div id="circle-02" class="toolbar-bttn">
+      <img class="bttn-icon" src="svg/circle-02.svg">
+    </div>
+    <div id="circle-03" class="toolbar-bttn">
+      <img class="bttn-icon" src="svg/circle-03.svg">
+    </div>
+    <div id="circle-04" class="toolbar-bttn">
+      <img class="bttn-icon" src="svg/circle-04.svg">
+    </div>
+    <div id="circle-05" class="toolbar-bttn">
+      <img class="bttn-icon" src="svg/circle-05.svg">
+    </div>
+    <div id="circle-06" class="toolbar-bttn">
+      <img class="bttn-icon" src="svg/circle-06.svg">
+    </div>
+    <div id="circle-07" class="toolbar-bttn">
+      <img class="bttn-icon" src="svg/circle-07.svg">
+    </div>
+    <div id="circle-08" class="toolbar-bttn">
+      <img class="bttn-icon" src="svg/circle-08.svg">
+    </div>
+    <div id="circle-09" class="toolbar-bttn">
+      <img class="bttn-icon" src="svg/circle-09.svg">
+    </div>
+  </div>
+
+
+
+
+  <script type="text/javascript" src="js/script01.js"></script>
+  <script type="text/javascript" src="js/script02.js"></script>
+  <script type="text/javascript" src="js/script03.js"></script>
+  <script type="text/javascript" src="js/script04.js"></script>
+
+  <script type="text/javascript">
+    // Basic usage below:
+    // See js/script02.js to learn the utility functions: resize column width, get selected values, etc.
+
+    // Set a value
+    window.sheet.cells[2][3].value = "asdfasdf asdfsdasdf asdfasdfas asdfasf";
+
+    // Get a value
+    console.log(window.sheet.cells[2][3].value);
+
+    // Create a style
+    window.sheet.styles.push({
+      border: {
+        color: "red",
+        width: "5",
+      },
+      background: {
+        color: "yellow"
+      }
+    });
+
+    // Assign a style to a cell
+    window.sheet.cells[1][2].style = 1;
+
+    // Don't forget to render after every change!
+    render();
+  </script>
+
+</body>
+
+</html>

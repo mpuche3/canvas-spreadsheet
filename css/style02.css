@@ -1,0 +1,83 @@
+*:focus {
+  outline: none;
+}
+
+#main-toolbar {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: calc(100% - 50px);
+  height: 80px;
+  z-index: 1000;
+  background-color: rgba(200, 200, 200, 0.9);
+  display: flex;
+}
+
+.secondary-toolbar {
+  position: fixed;
+  bottom: 120px;
+  right: 30px;
+  width: calc(100% - 50px);
+  height: 80px;
+  z-index: 1000;
+  background-color: rgba(200, 200, 200, 0.9);
+  display: none;
+  overflow: hidden;
+}
+
+.toolbar-bttn {
+  width: 80px;
+  height: 80px;
+  position: relative;
+  left: 0px;
+  opacity: 0.7;
+}
+
+.toolbar-bttn:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.toolbar-bttn:hover > svg > ellipse {
+  stroke: black;
+  fill: rgba(255, 255, 255, 0.8);
+  fill-opacity: 1;
+}
+
+.toolbar-bttn:hover {
+  fill: rgba(0, 0, 0, 1);
+}
+
+.bttn-icon{
+  width: 60px;
+  height: 60px;
+  margin:10px 10px 10px 10px;
+}
+
+.bttn-icon:hover{
+  opacity: 1;
+}
+
+.toolbar-delimeter{
+  width: 2px;
+  height: 60px;
+  margin:10px 10px 10px 10px;
+  opacity: 0.7;
+  background: black;
+}
+
+svg {
+  width: 60px;
+  height: 60px;
+  margin:10px 10px 10px 10px;
+}
+
+#mpaQrLogo {
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 1000;
+  display: flex;
+}
+
+
