@@ -1,3 +1,4 @@
+
 function giveLogicToBttn(n) {
 	document.querySelector(`#bttn-0${n}-00`).onclick = function () {
 		const toolbar = document.querySelector(`#toolbar-0${n}`);
@@ -23,6 +24,10 @@ function giveLogicToBttn(n) {
 giveLogicToBttn(1);
 giveLogicToBttn(2);
 giveLogicToBttn(3);
+
+giveLogicToBttn("a");
+
+
 
 
 

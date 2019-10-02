@@ -1,7 +1,7 @@
 
 
 function giveStyleBttnOnclick(n) {
-    document.querySelector(`#bttn-01-0${n}`).onclick = function(){
+    document.querySelector(`#bttn-0a-0${n}`).onclick = function(){
         const cells = getSelectedCells();
         cells.map(cell => {
             cell.style = `${n}`
