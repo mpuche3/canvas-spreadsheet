@@ -292,18 +292,6 @@ document.querySelector("#table").addEventListener("mouseup", function (e) {
     window.position.mousedClicked = e.buttons === undefined ? e.which === 1 : e.buttons === 1;
 });
 
-document.querySelector("#table").addEventListener("dblclick", function (e) {
-    const x = e.offsetX;
-    const y = e.offsetY;
-    const row = getRowFromY(y);
-    const col = getColFromX(x);
-    window.sheet.selection.sr = row;
-    window.sheet.selection.sc = col;
-    window.sheet.selection.er = row;
-    window.sheet.selection.ec = col;
-    render();
-});
-
 document.querySelector("#table").addEventListener("click", function (e) {
     e.preventDefault();
 });
@@ -329,49 +317,92 @@ document.querySelector("#table").addEventListener("mousemove", e => {
 
 });
 
+document.querySelector("#table").addEventListener("dblclick", function (e) {
+    const x = e.offsetX;
+    const y = e.offsetY;
+    const row = getRowFromY(y);
+    const col = getColFromX(x);
+    window.sheet.selection.sr = row;
+    window.sheet.selection.sc = col;
+    window.sheet.selection.er = row;
+    window.sheet.selection.ec = col;
+    render();
+
+    //
+    const clientX = e.clientX;
+    const clientY = e.clientY;
+    const coords = "X coords: " + clientX + ", Y coords: " + clientX;
+    console.log(coords);
+
+    //
+    const input = document.querySelector('#inputCell');
+    input.style.display = "block";
+    input.innerText = getSelectedValues()[0];
+
+    //
+    const format = document.querySelector('#formatCell');
+    format.style.display = "block";
+    format.innerText = "style: #" + getSelectedCell().style;
 
 
+});
 
-////////
-//
-///////
+/////
+document.querySelector("#table").addEventListener("mousedown", hideInputBox);
 
-document.addEventListener("contextmenu", function (e) {
-    e.preventDefault();
-}, false);
+function hideInputBox (){
+    const input = document.querySelector('#inputCell');
+    input.style.display = "none";
+    input.innerText = "";
+    const format = document.querySelector('#formatCell');
+    format.style.display = "none";
+    format.innerText = "";
+}
 
-document.addEventListener("keydown", function (e) {
-    //document.onkeydown = function(e) {
-    // "I" key
-    if (e.ctrlKey && e.shiftKey && e.keyCode == 73) {
-        disabledEvent(e);
+////
+document.querySelector("#inputCell").addEventListener("keydown", function (e) {
+    //console.log(e);
+    if (e.code === "Enter" || e.keyCode === 13){
+        hideInputBox();
     }
-    // "J" key
-    if (e.ctrlKey && e.shiftKey && e.keyCode == 74) {
-        disabledEvent(e);
-    }
-    // "S" key + macOS
-    if (e.keyCode == 83 && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {
-        disabledEvent(e);
-    }
-    // "U" key
-    if (e.ctrlKey && e.keyCode == 85) {
-        disabledEvent(e);
-    }
-    // "F12" key
-    if (event.keyCode == 123) {
-        disabledEvent(e);
-    }
+});
 
-    function disabledEvent(e) {
-        if (e.stopPropagation) {
-            e.stopPropagation();
-        } else if (window.event) {
-            window.event.cancelBubble = true;
-        }
+////
+document.querySelector("#formatCell").addEventListener("keydown", function (e) {
+    //console.log(e);
+    if (e.code === "Enter" || e.keyCode === 13){
         e.preventDefault();
-        return false;
     }
+});
 
-}, false);
+
+/////
+const config = {characterData: true, subtree: true};
+const observerInputCell = new MutationObserver(function(mutations){
+    mutations.forEach(function(mutation){
+        //console.log(mutation.type); // <- It always detects changes
+        const value = document.querySelector("#inputCell").innerText;
+        setSelectedValues([value]);
+        render();
+    });    
+});
+observerInputCell.observe(document.querySelector("#inputCell"), config);
+
+/////
+const observerFormatCell = new MutationObserver(function(mutations){
+    mutations.forEach(function(mutation){
+        //console.log(mutation.type); // <- It always detects changes
+        const value = document.querySelector("#formatCell").innerText;
+        let num = value.replace( /^\D+/g, '');
+        if (sheet.styles[num] === undefined) num = 0;
+        getSelectedCell().style = num;
+        render();
+        // setSelectedValues([value]);
+        // render();
+    });    
+});
+observerFormatCell.observe(document.querySelector("#formatCell"), config);
+
+
+
 
