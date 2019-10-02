@@ -45,7 +45,7 @@
 }
 
 .toolbar-bttn:hover {
-  fill: rgba(0, 0, 0, 1);
+  opacity: 1 !important;
 }
 
 .bttn-icon{

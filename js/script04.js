@@ -1,17 +1,48 @@
-document.querySelector("#circle-bttn").onclick = function () {
-    const toolbar = document.querySelector("#secondary-circle-toolbar");
-    console.log(toolbar.style.display);
-    if (toolbar.style.display === "flex") {
-        toolbar.style.display = "none";
-        this.parentElement.style.borderBottom = "0px solid black";
-        this.style.opacity = 0.7;
-    } else {
-        toolbar.style.display = "flex";
-        this.parentElement.style.borderBottom = "3px solid black";
-        this.style.opacity = 1.0;
-    }
-};
+function giveLogicToBttn(n) {
+	document.querySelector(`#bttn-0${n}-00`).onclick = function () {
+		const toolbar = document.querySelector(`#toolbar-0${n}`);
+		initialDisplayValue = toolbar.style.display;
 
+		[...document.querySelectorAll(".secondary-toolbar")].map(toolbar => {
+			console.log(toolbar);
+			toolbar.style.display = "none";
+		});
+		[...document.querySelector("#main-toolbar").children].map(toolbar => {
+			toolbar.style.borderBottom = "0px solid black";
+			toolbar.style.opacity = 0.7;
+		});
+
+		if (initialDisplayValue === "none" || initialDisplayValue === "") {
+			toolbar.style.display = "flex";
+			this.style.borderBottom = "3px solid black";
+			this.style.opacity = 1.0;
+		}
+	};
+}
+
+giveLogicToBttn(1);
+giveLogicToBttn(2);
+giveLogicToBttn(3);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 function svgCircleBuilder(number) {
     return `<svg xmlns = "http://www.w3.org/2000/svg" >
 				<ellipse 
@@ -49,3 +80,5 @@ document.querySelector("#circle-06").insertAdjacentHTML("afterbegin", svgCircleB
 document.querySelector("#circle-07").insertAdjacentHTML("afterbegin", svgCircleBuilder(7));
 document.querySelector("#circle-08").insertAdjacentHTML("afterbegin", svgCircleBuilder(8));
 document.querySelector("#circle-09").insertAdjacentHTML("afterbegin", svgCircleBuilder(9));
+
+*/

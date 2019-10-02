@@ -17,22 +17,15 @@ window.position = {
 window.sheet = createSheet();
 window.sheet.cols.reduce((total, width) => total + width, 0);
 
-
 const canvas = document.querySelector("#canvas");
-const ctx = canvas.getContext("2d");
-//canvas.width = 1 + window.defaultSettings.numCols * window.defaultSettings.colWidth;
-//canvas.height = 1 + window.defaultSettings.numRows * window.defaultSettings.rowHeight;
 canvas.width = 1 + window.sheet.cols.reduce((total, col) => total + col.width, 0);
 canvas.height = 1 + window.sheet.rows.reduce((total, row) => total + row.height, 0);
+const ctx = canvas.getContext("2d");
 
 const canvasSel = document.querySelector("#canvas-sel");
-const ctxSel = canvasSel.getContext("2d");
-// canvasSel.width = 1 + window.defaultSettings.numCols * window.defaultSettings.colWidth;
-// canvasSel.height = 1 + window.defaultSettings.numRows * window.defaultSettings.rowHeight;
 canvasSel.width = 1 + window.sheet.cols.reduce((total, col) => total + col.width, 0);
 canvasSel.height = 1 + window.sheet.rows.reduce((total, row) => total + row.height, 0);
-
-
+const ctxSel = canvasSel.getContext("2d");
 
 function range(num) {
     const arr = [];
@@ -197,12 +190,14 @@ function renderCells(sheet) {
             }
 
             // Character style
-            ctx.fillStyle = "black";
-            ctx.strokeStyle = "black"; // lineWidth ALWAYS an even number
-            ctx.font = "15px Roboto";
+            //ctx.fillStyle = "black";
+            //ctx.strokeStyle = "black"; // lineWidth ALWAYS an even number
+            //ctx.font = "15px Roboto";
+            ctx.font      = "normal 14px Verdana";
+            ctx.fillStyle = "#000000";
+
 
             // Print value
-            ctx.font="16px roboto mono";
             let text = ""; // This is the value that will actually be rendered.
             const value = String(sheet.cells[r][c].value);
             const valWidth = ctx.measureText(value).width;
