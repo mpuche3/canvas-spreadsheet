@@ -344,6 +344,12 @@ document.querySelector("#table").addEventListener("dblclick", function (e) {
     format.style.display = "block";
     format.innerText = "style: #" + getSelectedCell().style;
 
+    // Get focues
+    var div = document.querySelector('#inputCell');
+    setTimeout(function() {
+        div.focus();
+    }, 0);
+
 
 });
 
