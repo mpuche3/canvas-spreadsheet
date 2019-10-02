@@ -115,7 +115,7 @@ svg {
   position: absolute;
   right: 30px;
   bottom: 120px;
-  width: 240;
+  width: 65px;
   height: 20px;
   background-color: rgba(200, 200, 200, 0.9);
   border: 5px rgba(200, 200, 200, 0.9) solid;
@@ -125,3 +125,6 @@ svg {
   /*contenteditable: true;*/
 }
 
+img.bttn-icon {
+  position: absolute;
+}
